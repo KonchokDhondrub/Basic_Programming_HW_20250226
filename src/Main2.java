@@ -5,11 +5,28 @@ public class Main2 {
         List<String> list = Arrays.asList(
                 "apple", "banana", "apple", "orange", "banana", "apple",
                 "banana", "apple", "banana", "apple", "grape", "banana",
-                "grape", "grape", "kiwi", "lemon"
+                "grape", "grape", "kiwi", "lemon", "apple", "apple",
+                "apple", "apple", "apple", "apple"
         );
         List<String> result = getMoreThan5SimilarStrings(list);
         System.out.println(result);
     }
+
+//    public static List<String> getMoreThan5SimilarStrings(List<String> list) {
+//        Map<String, Integer> map = new HashMap<>();
+//        List<String> result = new ArrayList<>();
+//        int n = 5;
+//        for (String str : list) {
+//            int count = map.getOrDefault(str, 0);
+//            if (count==n-1) {
+//                result.add(str);
+//                continue;
+//            }
+//            map.put(str, count+1);
+//        }
+//        return result;
+//    }
+
     public static List<String> getMoreThan5SimilarStrings(List<String> list) {
         Map<String, Integer> map = new HashMap<>();
         for (String str : list) {
@@ -17,7 +34,9 @@ public class Main2 {
         }
 
         List<String> result = new ArrayList<>();
-        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+
+
+        for (var entry : map.entrySet()) {
             if (entry.getValue() >= 5) {
                 result.add(entry.getKey());
             }
